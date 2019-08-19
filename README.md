@@ -3,7 +3,7 @@ Try and compare movement types in Unity
 
 ### About
 
-There are many ways to move a character in Unity. The Smooth Movement Test Application lets you play around with different settings. You can read more about the different strategies in the ![blog entry](https://www.zubspace.com/blog/smooth-movement-in-unity).
+There are many ways to move a character in Unity. The Smooth Movement Test Application lets you play around with different settings. You can read more about the different strategies in the [blog entry](https://www.zubspace.com/blog/smooth-movement-in-unity).
 
 ![Example of the smooth movement test application.](example.jpg)
 
@@ -13,7 +13,7 @@ You can add multiple lanes with different parameters and compare the result.
 
 **Speed**
 
-Changes the target velocity of all characters, specified in Units per Second. All movement types which directly set the position or the velocity will use this exact value. The movement types AddForce, AddImpulse and AddVelocity will use a simple ![PID Controller](https://en.wikipedia.org/wiki/PID_controller) which smoothly adjusts the current velocity according to deviation from the specified target velocity.
+Changes the target velocity of all characters, specified in Units per Second. All movement types which directly set the position or the velocity will use this exact value. The movement types AddForce, AddImpulse and AddVelocity will use a simple [PID Controller](https://en.wikipedia.org/wiki/PID_controller) which smoothly adjusts the current velocity according to deviation from the specified target velocity.
 
 **VSync**
 
