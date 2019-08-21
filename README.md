@@ -1,5 +1,5 @@
 # unity-smooth-movement-test
-Try and compare movement types in Unity
+Try and compare movement types in Unity. The code is based on Unity 2018.3.13f1.
 
 ### About
 
