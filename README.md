@@ -11,7 +11,7 @@ You can add multiple lanes with different parameters and compare the result.
 
 ### Releases
 
-&rightarrow; [WebGL Release](https://www.zubspace.com/tools/smooth-movement-test?target=_blank) (Opens a new browser tab)
+&rightarrow; [WebGL Release](https://www.zubspace.com/tools/smooth-movement-test?target=_blank) (Runs in your browser)
 
 &rightarrow; [Windows Release](https://www.zubspace.com//user/tools/smooth-movement-test/smooth-movement-test-win.zip) (Download, 20MB)
 
