@@ -24,6 +24,9 @@ public class Simulation : MonoBehaviour
     private LaneCanvas _laneCanvasPrefab = null;
 
     [SerializeField]
+    private Rigidbody2D _attachmentPrefab = null;
+
+    [SerializeField]
     private Text _speedText = null;
 
     [SerializeField]
@@ -55,6 +58,12 @@ public class Simulation : MonoBehaviour
 
     [SerializeField]
     private Slider _ballSlider = null;
+
+    [SerializeField]
+    private Text _hingeText = null;
+
+    [SerializeField]
+    private Slider _hingeSlider = null;
 
     [SerializeField]
     private Text _fpsText = null;
@@ -115,6 +124,9 @@ public class Simulation : MonoBehaviour
     private Transform _ballParent = null;
     private List<Transform> _balls = new List<Transform>();
 
+    private Transform _attachmentParent = null;
+    private List<Rigidbody2D> _attachments = new List<Rigidbody2D>();
+
 
     private Stopwatch _fpsRefreshStopwatch = new Stopwatch();
     private int _frameCount = 0;
@@ -134,6 +146,11 @@ public class Simulation : MonoBehaviour
     public static Simulation Instance { get; private set; }
 
     public float CameraMinY { get; private set; }
+
+    public Rigidbody2D AttachmentPrefab
+    {
+        get { return _attachmentPrefab; }
+    }
 
     #endregion Public Vars
 
@@ -227,8 +244,12 @@ public class Simulation : MonoBehaviour
 	void Awake()
     {
         Instance = this;
+
         _ballParent = new GameObject().transform;
         _ballParent.gameObject.name = "Ball Container";
+
+        _attachmentParent = new GameObject().transform;
+        _attachmentParent.gameObject.name = "Attachment Container";
     }
 
 
@@ -343,6 +364,13 @@ public class Simulation : MonoBehaviour
 
         _balls.Clear();
 
+        for (int i = 0; i < _attachments.Count; i++)
+        {
+            Destroy(_attachments[i].gameObject);
+        }
+
+        _attachments.Clear();
+
         if (_vsyncSlider.value != 0)
         {
             QualitySettings.vSyncCount = (int) _vsyncSlider.value;
@@ -365,8 +393,6 @@ public class Simulation : MonoBehaviour
         Time.fixedDeltaTime = 1f / (int) _physicsRateSlider.value;
 
         _frameRatePanel.gameObject.SetActive(_vsyncSlider.value == 0);
-
-        Physics2D.gravity = Vector2.zero;
 
         _colliderTilemap.ClearAllTiles();
         _backgroundTilemap.ClearAllTiles();
@@ -459,6 +485,8 @@ public class Simulation : MonoBehaviour
 
         for (int i = 0; i < _players.Count; ++i)
         {
+            Player player = _players[i];
+
             LaneCanvas laneCanvas;
 
             if (!_sharedSettings)
@@ -472,7 +500,7 @@ public class Simulation : MonoBehaviour
                 laneCanvas.transform.position = new Vector3(15.1f, 5f, 0);
             }
 
-            _players[i].Restart(
+            player.Restart(
                 i,
                 new Vector3(-16, 5 - i * 3, 0),
                 laneCanvas.MethodType,
@@ -481,6 +509,27 @@ public class Simulation : MonoBehaviour
                 laneCanvas.InterpolationType,
                 _speedSlider.value,
                 displayStyle);
+
+
+            if (_hingeSlider.value > 0 && player.HingeJoint != null)
+            {
+                Vector2 offset = new Vector2(0.0f, 0.7f);
+                Vector3 connectedPos = player.transform.position;
+
+                connectedPos.x += offset.x;
+                connectedPos.y += offset.y;
+
+                HingeJoint2D playerHingeJoint = player.HingeJoint;
+
+                Rigidbody2D attachment = GameObject.Instantiate(Simulation.Instance.AttachmentPrefab, connectedPos, Quaternion.identity, _attachmentParent);
+
+                playerHingeJoint.connectedBody = attachment;
+                playerHingeJoint.connectedAnchor = offset;
+                playerHingeJoint.enabled = true;
+
+                _attachments.Add(attachment);
+            }
+
 
             float x = -13;
 
@@ -531,6 +580,15 @@ public class Simulation : MonoBehaviour
         _physicsRateText.text = _physicsRateSlider.value.ToString();
         _ballText.text = _ballSlider.value.ToString();
         _laneText.text = _laneSlider.value.ToString();
+
+        if (_hingeSlider.value == 0)
+        {
+            _hingeText.text = "Off";
+        }
+        else
+        {
+            _hingeText.text = "On";
+        }
 
         if (_displaySlider.value == 0)
         {

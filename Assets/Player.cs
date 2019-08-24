@@ -31,8 +31,10 @@ namespace zs
 
         private Transform _spriteTransform;
         private Rigidbody2D _rigidbody;
+        private HingeJoint2D _hingeJoint;
         private CharacterController _characterController;
         private float _velocity;
+
 
         private const float _minX = -16f;
         private const float _maxX = 8.5f;
@@ -52,6 +54,11 @@ namespace zs
         public Rigidbody2D Rigidbody
         {
             get { return _rigidbody; }
+        }
+
+        public HingeJoint2D HingeJoint
+        {
+            get { return _hingeJoint; }
         }
 
         #endregion Public Vars
@@ -82,6 +89,8 @@ namespace zs
             transform.position = position;
             transform.rotation = Quaternion.identity;
 
+            _hingeJoint.enabled = false;
+
 
             _spriteTransform.parent = transform;
             _spriteTransform.transform.localPosition = Vector3.zero;
@@ -92,11 +101,17 @@ namespace zs
 
             if (_movementType == MovementType.CharacterController_Move)
             {
+                // Those components are not compatible with the CharacterController component.
+                DestroyImmediate(GetComponent<HingeJoint2D>());
                 DestroyImmediate(GetComponent<Rigidbody2D>());
                 DestroyImmediate(GetComponent<BoxCollider2D>());
 
                 _rigidbody = null;
+                _hingeJoint = null;
                 _characterController = gameObject.AddComponent<CharacterController>();
+                _characterController.height = 1;
+
+                displayStyle = DisplayStyle.Sprite;
 
                 if (_methodType == MethodType.FixedUpdate &&
                     (interpolationType == InterpolationType.Custom_Bad || interpolationType == InterpolationType.Custom_Good))
@@ -206,6 +221,7 @@ namespace zs
         {
             _spriteTransform = _spriteRenderer.transform;
             _rigidbody = GetComponent<Rigidbody2D>();
+            _hingeJoint = GetComponent<HingeJoint2D>();
             _velocity = _speed;
         }
 
@@ -249,7 +265,10 @@ namespace zs
                 }
             }
 
-            _rigidbodySpriteRenderer.transform.position = _rigidbody.position;
+            if (_rigidbody != null)
+            {
+                _rigidbodySpriteRenderer.transform.position = _rigidbody.position;
+            }
         }
 
         void FixedUpdate()

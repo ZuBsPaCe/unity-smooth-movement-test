@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4373056733707495571}
   - component: {fileID: 5505377156498807590}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RigidbodySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,8 @@ GameObject:
   - component: {fileID: 1662217806198287753}
   - component: {fileID: 1662217806198287752}
   - component: {fileID: 1662217806198287751}
-  m_Layer: 0
+  - component: {fileID: 8200636062851843051}
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,6 +180,30 @@ MonoBehaviour:
     _kp: 5
     _ki: 0
     _kd: 0.75
+--- !u!233 &8200636062851843051
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662217806198287755}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 0
+  m_AngleLimits:
+    m_LowerAngle: 0
+    m_UpperAngle: 359
 --- !u!1 &1662217806276978767
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1662217806276978764}
   - component: {fileID: 1662217806276978765}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
