@@ -3,7 +3,7 @@ Try and compare movement types in Unity. The code is based on Unity 2018.3.13f1.
 
 ### About
 
-There are many ways to move a character in Unity. The Smooth Movement Test Application lets you play around with different settings. You can read more about the different strategies in the [blog entry](https://www.zubspace.com/blog/smooth-movement-in-unity).
+There are many ways to move a character in Unity. The Smooth Movement Test Application lets you play around with different settings. You can learn more about the different movement types in the [blog entry](https://www.zubspace.com/blog/smooth-movement-in-unity).
 
 ![Example of the smooth movement test application.](example.jpg)
 
@@ -13,9 +13,19 @@ You can add multiple lanes with different parameters and compare the result.
 
 &rightarrow; [WebGL Release](https://www.zubspace.com/tools/smooth-movement-test) (Runs in your browser)
 
-&rightarrow; [Windows Release](https://www.zubspace.com/user/tools/smooth-movement-test/smooth-movement-test-win.zip) (Download, 20MB)
+&rightarrow; [Windows Release](https://www.zubspace.com/user/tools/smooth-movement-test/smooth-movement-test-win.zip) (Download, 18MB)
 
-&rightarrow; [Linux Release](https://www.zubspace.com/user/tools/smooth-movement-test/smooth-movement-test-linux.zip) (Download, 23MB)
+&rightarrow; [Linux Release](https://www.zubspace.com/user/tools/smooth-movement-test/smooth-movement-test-linux.zip) (Download, 18MB)
+
+### How to use
+
+Add multiple lanes, set different lane settings and compare the results. Increase the ball count, enable the hinge joint option and try to find the settings which look best to you.
+
+**Move the mouse to the top center or bottom center** of the canvas to move up or down. Alternatively use the **Arrow Keys**. 
+
+Press **F** to follow or unfollw the character. You can press the **Arrow Keys** while following to change the lane.
+
+The **Log** option will print Update and FixedUpdate timings to the developer console in the browser, which can usually be opened with **F12**. Only enable this a short time, because a large log can slow down or even crash the browser. The desktop versions will create a log file instead called **SmoothMovement.log**.
 
 ### Settings
 
@@ -31,13 +41,17 @@ Enables or disables Vertical Sychronization of the renderer and the screen. If y
 
 By disabling VSync you will be able to set a target frame rate.
 
+**Lanes**
+
+Each lane can have different lane settings. That way you can compare the smoothness of the motion and the effect of the lane settings on the balls.
+
 **Balls**
 
 You can add some "Balls" to the simulation. Spheres with a Dynamic Rigidbody2D, which will collide with the character.
 
-**Lanes**
+**Hinge**
 
-Each lane can have different lane settings. That way you can compare the smoothness of the motion and the effect of the lane settings on the balls.
+Adds a HingeJoint2D component to the character with a white ball attached to it. The ball is a dynamic rigidbody with interpolation enabled. It circles around the player and is the only object affected by gravity. The hinge joint can affect the movement of the character.
 
 **Display**
 
