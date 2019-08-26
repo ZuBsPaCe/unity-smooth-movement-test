@@ -3,8 +3,8 @@ namespace zs
 {
     public enum MovementType
     {
-        Transform_SetPosition,
-        Rigidbody_SetPosition,
+        Transform_Position,
+        Rigidbody_Position,
         Rigidbody_MovePosition,
         Rigidbody_SetVelocity,
         Rigidbody_AddVelocity,

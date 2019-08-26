@@ -291,7 +291,7 @@ namespace zs
         {
             switch (_movementType)
             {
-                case MovementType.Transform_SetPosition:
+                case MovementType.Transform_Position:
                 {
                     _startInterpolationPos = transform.position;
 
@@ -306,7 +306,7 @@ namespace zs
                     break;
                 }
 
-                case MovementType.Rigidbody_SetPosition:
+                case MovementType.Rigidbody_Position:
                 {
                     _startInterpolationPos = _rigidbody.position;
 

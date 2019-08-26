@@ -17,6 +17,8 @@ You can add multiple lanes with different parameters and compare the result.
 
 &rightarrow; [Linux Release](https://www.zubspace.com/user/tools/smooth-movement-test/smooth-movement-test-linux.zip) (Download, 18MB)
 
+Hint: The performance of the WebGL Release depends on your hardware and browser. If your running in performance issues, try a desktop release.
+
 ### How to use
 
 Add multiple lanes, set different lane settings and compare the results. Increase the ball count, enable the hinge joint option and try to find the settings which look best to you.
@@ -99,20 +101,20 @@ Switch between a kinematic or dynamic rigidbody used for the character. A dynami
 
 Select the method used for moving the rigidbody of the character. The procedure is repeated in Update or FixedUpdate depending on the Method set above.
 
-* **GameObject SetPosition** moves the character by setting transform.position directly.
-* **Rigidbody SetPosition** moves the character by setting Rigidbody2D.position directly.
-* **Rigidbody MovePosition** moves the character by calling Rigidbody2D.MovePosition().
-* **Rigidbody SetVelocity** moves the character by setting Rigidbody2D.velocity.
-* **Rigidbody AddVelocity** moves the character by adjusting Rigidbody2D.velocity smoothly over time with a simple PID Controller.
-* **Rigidbody AddForce** moves the character by calling Rigidbody2D.AddForce() with ForceMode2D.Force. The force is smoothly adjusted over time with a simple PID Controller.
-* **Rigidbody AddImpulse** moves the character by calling Rigidbody2D.AddForce() with ForceMode2D.Impulse. The force is smoothly adjusted over time with a simple PID Controller.
+* **Transform.Position** moves the character by setting transform.position directly.
+* **Rigidbody.Position** moves the character by setting Rigidbody2D.position directly.
+* **Rigidbody.MovePosition** moves the character by calling Rigidbody2D.MovePosition().
+* **Rigidbody.SetVelocity** moves the character by setting Rigidbody2D.velocity.
+* **Rigidbody.AddVelocity** moves the character by adjusting Rigidbody2D.velocity smoothly over time with a simple PID Controller.
+* **Rigidbody.AddForce** moves the character by calling Rigidbody2D.AddForce() with ForceMode2D.Force. The force is smoothly adjusted over time with a simple PID Controller.
+* **Rigidbody.AddImpulse** moves the character by calling Rigidbody2D.AddForce() with ForceMode2D.Impulse. The force is smoothly adjusted over time with a simple PID Controller.
 
 **Interpolation (Lane setting)**
 
 Method FixedUpdate enables you to assign an interpolation type to the character sprite.
 
 * **None** disabled interpolation. The sprite will always be at the rigidbody position.
-* **Rigidbody interpolate** uses the standard Unity interpolation setting of Rigidbody2D.
-* **Rigidbody extrapolate** uses the standard Unity extrapolation setting of Rigidbody2D.
-* **Custom bad** uses a simple self made interpolation, which lerps the position of the sprite from the previous rigidbody position to the last calculated rigidbody position. The last calculated rigidbody position is incorrect, because it is determined in FixedUpdate itself, before the "internal physic update" of Unity.
-* **Custom good** uses a simple self made interpolation, which lerps the position of the sprite from the previous rigidbody position to the last calculated rigidbody position. The last calculated rigidbody position is retrieved correctly after the "internal physic update" of Unity. The trick is to get the final rigidbody position in a Coroutine, which yields WaitForFixedUpdate().
+* **Rigidbody Interpolate** uses the standard Unity interpolation setting of Rigidbody2D.
+* **Rigidbody Extrapolate** uses the standard Unity extrapolation setting of Rigidbody2D.
+* **Custom Bad** uses a simple self made interpolation, which lerps the position of the sprite from the previous rigidbody position to the last calculated rigidbody position. The last calculated rigidbody position is incorrect, because it is determined in FixedUpdate itself, before the "internal physic update" of Unity.
+* **Custom Good** uses a simple self made interpolation, which lerps the position of the sprite from the previous rigidbody position to the last calculated rigidbody position. The last calculated rigidbody position is retrieved correctly after the "internal physic update" of Unity. The trick is to get the final rigidbody position in a Coroutine, which yields WaitForFixedUpdate().

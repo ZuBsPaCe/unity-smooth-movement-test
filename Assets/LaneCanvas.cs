@@ -45,7 +45,7 @@ namespace zs
 
         private MethodType _methodType = MethodType.Update;
         private BodyType _bodyType = BodyType.Kinematic;
-        private MovementType _movementType = MovementType.Transform_SetPosition;
+        private MovementType _movementType = MovementType.Transform_Position;
         private InterpolationType _interpolationType = InterpolationType.None;
 
         private float _lastVelocityUpdate = 0;
