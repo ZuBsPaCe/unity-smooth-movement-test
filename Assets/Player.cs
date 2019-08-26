@@ -35,9 +35,8 @@ namespace zs
         private CharacterController _characterController;
         private float _velocity;
 
-
-        private const float _minX = -15.25f;
-        private const float _maxX = 7f;
+        private float _minX;
+        private float _maxX;
 
         private Vector2 _startInterpolationPos = Vector2.zero;
         private Vector2 _endInterpolationPos = Vector2.zero;
@@ -68,6 +67,8 @@ namespace zs
         public void Restart(
             int playerIndex,
             Vector3 position,
+            float minX,
+            float maxX,
             MethodType methodType,
             BodyType bodyType,
             MovementType movementType,
@@ -88,6 +89,9 @@ namespace zs
 
             transform.position = position;
             transform.rotation = Quaternion.identity;
+
+            _minX = minX;
+            _maxX = maxX;
 
             _hingeJoint.enabled = false;
 

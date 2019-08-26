@@ -127,6 +127,9 @@ public class Simulation : MonoBehaviour
     private Transform _attachmentParent = null;
     private List<Rigidbody2D> _attachments = new List<Rigidbody2D>();
 
+    private const float _playerMinX = -15.25f;
+    private const float _playerMaxX = 7f;
+
 
     private Stopwatch _fpsRefreshStopwatch = new Stopwatch();
     private int _frameCount = 0;
@@ -502,7 +505,9 @@ public class Simulation : MonoBehaviour
 
             player.Restart(
                 i,
-                new Vector3(-16, 5 - i * 3, 0),
+                new Vector3(_playerMinX, 5 - i * 3, 0),
+                _playerMinX,
+                _playerMaxX,
                 laneCanvas.MethodType,
                 laneCanvas.BodyType,
                 laneCanvas.MovementType,
