@@ -36,8 +36,8 @@ namespace zs
         private float _velocity;
 
 
-        private const float _minX = -16f;
-        private const float _maxX = 8.5f;
+        private const float _minX = -15.25f;
+        private const float _maxX = 7f;
 
         private Vector2 _startInterpolationPos = Vector2.zero;
         private Vector2 _endInterpolationPos = Vector2.zero;
@@ -287,7 +287,7 @@ namespace zs
         {
             switch (_movementType)
             {
-                case MovementType.GameObject_SetPosition:
+                case MovementType.Transform_SetPosition:
                 {
                     _startInterpolationPos = transform.position;
 

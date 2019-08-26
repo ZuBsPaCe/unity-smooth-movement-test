@@ -45,7 +45,7 @@ namespace zs
 
         private MethodType _methodType = MethodType.Update;
         private BodyType _bodyType = BodyType.Kinematic;
-        private MovementType _movementType = MovementType.GameObject_SetPosition;
+        private MovementType _movementType = MovementType.Transform_SetPosition;
         private InterpolationType _interpolationType = InterpolationType.None;
 
         private float _lastVelocityUpdate = 0;
@@ -201,10 +201,10 @@ namespace zs
             _interpolationPanel.gameObject.SetActive(_methodType == MethodType.FixedUpdate);
             _bodyPanel.gameObject.SetActive(_movementType != MovementType.CharacterController_Move);
 
-            _methodText.text = _methodType.ToString().Replace("_", Environment.NewLine);
-            _bodyText.text = _bodyType.ToString().Replace("_", Environment.NewLine);
-            _movementText.text = _movementType.ToString().Replace("_", Environment.NewLine);
-            _interpolationText.text = _interpolationType.ToString().Replace("_", Environment.NewLine);
+            _methodText.text = _methodType.ToString();
+            _bodyText.text = _bodyType.ToString();
+            _movementText.text = _movementType.ToString().Replace("_", ".");
+            _interpolationText.text = _interpolationType.ToString().Replace("_", " ");
         }
 
         #endregion Private Methods

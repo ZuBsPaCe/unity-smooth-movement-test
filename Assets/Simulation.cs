@@ -399,7 +399,7 @@ public class Simulation : MonoBehaviour
 
         int laneCount = (int) _laneSlider.value;
         const int laneMinX = -18;
-        const int laneMaxX = 10;
+        const int laneMaxX = 9;
         int laneY = 6;
 
         for (int i = 0; i < laneCount; ++i)
@@ -492,12 +492,12 @@ public class Simulation : MonoBehaviour
             if (!_sharedSettings)
             {
                 laneCanvas = _laneCanvases[i];
-                laneCanvas.transform.position = new Vector3(15.1f, 5f - i * 3, 0);
+                laneCanvas.transform.position = new Vector3(14.75f, 5f - i * 3, 0);
             }
             else
             {
                 laneCanvas = _laneCanvases[0];
-                laneCanvas.transform.position = new Vector3(15.1f, 5f, 0);
+                laneCanvas.transform.position = new Vector3(14.75f, 5f, 0);
             }
 
             player.Restart(

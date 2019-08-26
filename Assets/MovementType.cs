@@ -1,8 +1,9 @@
-﻿namespace zs
+﻿
+namespace zs
 {
     public enum MovementType
     {
-        GameObject_SetPosition,
+        Transform_SetPosition,
         Rigidbody_SetPosition,
         Rigidbody_MovePosition,
         Rigidbody_SetVelocity,
