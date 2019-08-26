@@ -179,7 +179,7 @@ MonoBehaviour:
   _addForcePidController:
     _kp: 5
     _ki: 0
-    _kd: 0.75
+    _kd: 0.5
 --- !u!233 &8200636062851843051
 HingeJoint2D:
   m_ObjectHideFlags: 0

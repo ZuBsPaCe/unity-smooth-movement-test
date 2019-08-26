@@ -2,27 +2,37 @@
 
 namespace zs
 {
+    /// <summary>
+    /// PID stands for proportional, integral, and derivative.
+    /// </summary>
     [System.Serializable]
     public class PidController
     {
         #region Serializable Fields
 
         /// <summary>
-        /// Linear correction
+        /// Linear correction. Multiplied with the error. Basic response.
+        ///
+        /// If Velocity is too low, speeds up.
+        /// If Velocity is too high, slows down.
         /// </summary>
         [SerializeField]
         private float _kp = 0.2f;
 	
         /// <summary>
-        /// If error increases, increases correction.
-        /// If error decreases, reduces correction.
-        /// -> Smoothing
+        /// Integral correction. Multiplied with the integral/sum of the error.
+        ///
+        /// Takes into account the error at previous times.
+        /// Helps with responses time. If velocity is too low and increases
+        /// too slow, the integral correction will increase the velocity faster.
         /// </summary>
         [SerializeField]
         private float _ki = 0.05f;
 	
         /// <summary>
-        /// If 
+        /// Derivative correction. Multiplied with the derivative of the error.
+        ///
+        /// Determines how fast the error is changing. Prevents overshoot.
         /// </summary>
         [SerializeField]
         private float _kd = 1f;
