@@ -71,12 +71,14 @@
     <Compile Include="Assets\MainCanvas.cs" />
     <Compile Include="Assets\MethodType.cs" />
     <Compile Include="Assets\MovementType.cs" />
+    <Compile Include="Assets\PhysicsSyncType.cs" />
     <Compile Include="Assets\PidController.cs" />
     <Compile Include="Assets\Player.cs" />
     <Compile Include="Assets\Simulation.cs" />
+    <Compile Include="Assets\SimulationPostUpdate.cs" />
     <None Include="Assets\Fonts\OFL.txt" />
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/code/personal/github/unity-smooth-movement-test/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/code/personal/github.com/unity-smooth-movement-test/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

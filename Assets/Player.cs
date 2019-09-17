@@ -8,9 +8,6 @@ namespace zs
         #region Serializable Fields
 
         [SerializeField]
-        private SpriteRenderer _rigidbodySpriteRenderer = null;
-
-        [SerializeField]
         private SpriteRenderer _spriteRenderer = null;
 
         [SerializeField]
@@ -187,18 +184,13 @@ namespace zs
             switch (displayStyle)
             {
                 case DisplayStyle.Sprite:
-                    _spriteRenderer.enabled = true;
-                    _rigidbodySpriteRenderer.enabled = false;
-                    break;
-
                 case DisplayStyle.RigidbodyAndSprite:
                     _spriteRenderer.enabled = true;
-                    _rigidbodySpriteRenderer.enabled = true;
+                    _spriteRenderer.enabled = true;
                     break;
 
                 case DisplayStyle.Rigidbody:
                     _spriteRenderer.enabled = false;
-                    _rigidbodySpriteRenderer.enabled = true;
                     break;
             }
 
@@ -267,11 +259,6 @@ namespace zs
                     float factor = (Time.time - Time.fixedTime) / Time.fixedDeltaTime;
                     _spriteTransform.position  = Vector2.Lerp(_startInterpolationPos, _endInterpolationPos, factor);
                 }
-            }
-
-            if (_rigidbody != null)
-            {
-                _rigidbodySpriteRenderer.transform.position = _rigidbody.position;
             }
         }
 

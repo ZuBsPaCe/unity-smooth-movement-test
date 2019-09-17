@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using zs;
 
 public class MainCanvas : MonoBehaviour
 {

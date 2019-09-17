@@ -16,6 +16,9 @@ namespace zs
         private Text _methodText = null;
 
         [SerializeField]
+        private Button _methodButton = null;
+
+        [SerializeField]
         private Text _bodyText = null;
 
         [SerializeField]
@@ -42,6 +45,8 @@ namespace zs
 
         private int _laneIndex = 0;
         private Player _player = null;
+
+        private PhysicsSyncType _physicsSyncType;
 
         private MethodType _methodType = MethodType.Update;
         private BodyType _bodyType = BodyType.Kinematic;
@@ -104,6 +109,23 @@ namespace zs
         {
             _laneIndex = laneIndex;
             _player = player;
+        }
+
+        public void Restart(
+            PhysicsSyncType physicsSyncType)
+        {
+            _physicsSyncType = physicsSyncType;
+
+            if (physicsSyncType == PhysicsSyncType.Default)
+            {
+                _methodText.text = _methodType.ToString();
+                _methodButton.interactable = true;
+            }
+            else
+            {
+                _methodText.text = MethodType.Update.ToString();
+                _methodButton.interactable = false;
+            }
         }
 
         public void OnMethodButton_Clicked()
