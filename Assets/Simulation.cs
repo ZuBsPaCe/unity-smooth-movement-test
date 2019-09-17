@@ -137,6 +137,8 @@ namespace zs
         private Transform _attachmentParent = null;
         private List<Rigidbody2D> _attachments = new List<Rigidbody2D>();
 
+        private Transform _laneCanvasParent = null;
+
         private const float _playerMinX = -15.25f;
         private const float _playerMaxX = 7f;
 
@@ -264,6 +266,9 @@ namespace zs
 
             _attachmentParent = new GameObject().transform;
             _attachmentParent.gameObject.name = "Attachment Container";
+
+            _laneCanvasParent = new GameObject().transform;
+            _laneCanvasParent.gameObject.name = "LaneCanvas Container";
         }
 
 
@@ -478,7 +483,7 @@ namespace zs
             while (!_sharedSettings && _laneCanvases.Count < laneCount ||
                    _sharedSettings && _laneCanvases.Count < 1)
             {
-                LaneCanvas newLaneCanvas = Instantiate(_laneCanvasPrefab);
+                LaneCanvas newLaneCanvas = Instantiate(_laneCanvasPrefab, _laneCanvasParent);
 
                 if (_laneCanvases.Count > 0)
                 {
@@ -494,22 +499,24 @@ namespace zs
 
             for (int i = 0; i < _laneCanvases.Count; ++i)
             {
+                LaneCanvas laneCanvas = _laneCanvases[i];
+
                 if (!_sharedSettings && i < laneCount ||
                     _sharedSettings && i == 0)
                 {
-                    _laneCanvases[i].gameObject.SetActive(true);
+                    laneCanvas.gameObject.SetActive(true);
                 }
                 else
                 {
-                    _laneCanvases[i].gameObject.SetActive(false);
+                    laneCanvas.gameObject.SetActive(false);
                 }
 
                 if (i < laneCount)
                 {
-                    _laneCanvases[i].Init(i, _players[i]);
+                    laneCanvas.Init(i, _players[i]);
                 }
 
-                _laneCanvases[i].Restart(_physicsSyncType);
+                laneCanvas.Restart(_physicsSyncType);
             }
 
             for (int i = 0; i < _players.Count; ++i)

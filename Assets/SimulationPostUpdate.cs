@@ -15,6 +15,8 @@ namespace zs
 
         #region Private Vars
 
+        private Transform _rigidbodySpriteParent = null;
+
         private PhysicsSyncType _syncType;
         private DisplayStyle _displayStyle;
 
@@ -48,7 +50,7 @@ namespace zs
             if (player.Rigidbody != null &&
                 (_displayStyle == DisplayStyle.RigidbodyAndSprite || _displayStyle == DisplayStyle.Rigidbody))
             {
-                _playerToRigidbodySprite.Add(Tuple.Create(player, Instantiate(_rigidbodySpritePrefab, player.Rigidbody.position, Quaternion.identity)));
+                _playerToRigidbodySprite.Add(Tuple.Create(player, Instantiate(_rigidbodySpritePrefab, player.Rigidbody.position, Quaternion.identity, _rigidbodySpriteParent)));
             }
         }
 
@@ -56,8 +58,10 @@ namespace zs
 
         #region MonoBehaviour
 
-        void Start()
+        void Awake()
         {
+            _rigidbodySpriteParent = new GameObject().transform;
+            _rigidbodySpriteParent.gameObject.name = "Rigidbody Sprite Container";
         }
 
         /// <summary>
