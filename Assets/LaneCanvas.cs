@@ -116,16 +116,7 @@ namespace zs
         {
             _physicsSyncType = physicsSyncType;
 
-            if (physicsSyncType == PhysicsSyncType.Default)
-            {
-                _methodText.text = _methodType.ToString();
-                _methodButton.interactable = true;
-            }
-            else
-            {
-                _methodText.text = MethodType.Update.ToString();
-                _methodButton.interactable = false;
-            }
+            UpdateTexts();
         }
 
         public void OnMethodButton_Clicked()
@@ -220,10 +211,21 @@ namespace zs
         {
             _laneLabel.text = "Lane " + (_laneIndex + 1);
 
-            _interpolationPanel.gameObject.SetActive(_methodType == MethodType.FixedUpdate);
+            _interpolationPanel.gameObject.SetActive(_methodType == MethodType.FixedUpdate && _physicsSyncType == PhysicsSyncType.Default);
             _bodyPanel.gameObject.SetActive(_movementType != MovementType.CharacterController_Move);
 
-            _methodText.text = _methodType.ToString();
+
+            if (_physicsSyncType == PhysicsSyncType.Default)
+            {
+                _methodText.text = _methodType.ToString();
+                _methodButton.interactable = true;
+            }
+            else
+            {
+                _methodText.text = MethodType.Update.ToString();
+                _methodButton.interactable = false;
+            }
+
             _bodyText.text = _bodyType.ToString();
             _movementText.text = _movementType.ToString().Replace("_", ".");
             _interpolationText.text = _interpolationType.ToString().Replace("_", " ");
