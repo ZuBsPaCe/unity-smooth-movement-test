@@ -220,7 +220,7 @@ namespace zs
         {
             _laneLabel.text = "Lane " + (_laneIndex + 1);
 
-            _interpolationPanel.gameObject.SetActive(_methodType == MethodType.FixedUpdate);
+            _interpolationPanel.gameObject.SetActive(_methodType == MethodType.FixedUpdate && _physicsSyncType == PhysicsSyncType.Default);
             _bodyPanel.gameObject.SetActive(_movementType != MovementType.CharacterController_Move);
 
             _methodText.text = _methodType.ToString();
