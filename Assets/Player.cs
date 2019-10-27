@@ -335,7 +335,7 @@ namespace zs
 
                     _rigidbody.velocity = new Vector2(_velocity, 0);
 
-                    _endInterpolationPos = _startInterpolationPos + _rigidbody.velocity * Time.fixedDeltaTime;
+                    _endInterpolationPos = _startInterpolationPos + _rigidbody.velocity * Time.deltaTime;
                     break;
                 }
 
@@ -345,11 +345,11 @@ namespace zs
                 {
                     _startInterpolationPos = _rigidbody.position;
 
-                    float change = _addForcePidController.Update(_velocity - _rigidbody.velocity.x, Time.fixedDeltaTime);
+                    float change = _addForcePidController.Update(_velocity - _rigidbody.velocity.x, Time.deltaTime);
 
                     if (_movementType == MovementType.Rigidbody_AddVelocity)
                     {
-                        _rigidbody.velocity += new Vector2(change * Time.fixedDeltaTime, 0);
+                        _rigidbody.velocity += new Vector2(change * Time.deltaTime, 0);
                     }
                     else if (_movementType == MovementType.Rigidbody_AddForce)
                     {
@@ -357,7 +357,7 @@ namespace zs
                     }
                     else if (_movementType == MovementType.Rigidbody_AddImpulse)
                     {
-                        _rigidbody.AddForce(new Vector2(change * Time.fixedDeltaTime, 0), ForceMode2D.Impulse);
+                        _rigidbody.AddForce(new Vector2(change * Time.deltaTime, 0), ForceMode2D.Impulse);
                     }
 
                     Vector3 position = _rigidbody.position;
@@ -367,7 +367,7 @@ namespace zs
                         _rigidbody.velocity = -_rigidbody.velocity;
                     }
 
-                    _endInterpolationPos = _startInterpolationPos + _rigidbody.velocity * Time.fixedDeltaTime;
+                    _endInterpolationPos = _startInterpolationPos + _rigidbody.velocity * Time.deltaTime;
                     break;
                 }
 
