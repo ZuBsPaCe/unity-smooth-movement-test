@@ -47,6 +47,7 @@ namespace zs
 
         public void RegisterPlayer(Player player)
         {
+            // We use this, to move the red rectangle, which indicates the (maybe interpolated) position of the rigidbody.
             if (player.Rigidbody != null &&
                 (_displayStyle == DisplayStyle.RigidbodyAndSprite || _displayStyle == DisplayStyle.Rigidbody))
             {
@@ -75,6 +76,7 @@ namespace zs
                 Physics2D.Simulate(Time.deltaTime);
             }
 
+            // Refresh the position of the red rectangle, which indicates the (maybe interpolated) position of the rigidbody.
             foreach (var item in _playerToRigidbodySprite)
             {
                 item.Item2.transform.position = item.Item1.Rigidbody.position;
