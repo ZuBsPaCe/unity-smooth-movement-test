@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
-using zs.Assets;
 
 namespace zs
 {

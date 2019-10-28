@@ -1,65 +1,67 @@
 ﻿using UnityEngine;
-using zs;
 
-public class MainCanvas : MonoBehaviour
+namespace zs
 {
-    #region Serializable Fields
-
-    #endregion Serializable Fields
-
-    #region Private Vars
-
-    #endregion Private Vars
-
-    #region Public Vars
-
-    #endregion Public Vars
-
-    #region Public Methods
-
-    public void Restart()
+    public class MainCanvas : MonoBehaviour
     {
-        Simulation.Instance.Restart();
-    }
+        #region Serializable Fields
 
-    public void Reset()
-    {
-        Simulation.Instance.Reset();
-    }
+        #endregion Serializable Fields
 
-    public void ToggleLog()
-    {
-        Simulation.Instance.ToggleLog();
-    }
+        #region Private Vars
 
-    public void ToggleSharedSettings()
-    {
-        Simulation.Instance.ToggleSharedSettings();
-    }
+        #endregion Private Vars
 
-    public void ToggleFollow()
-    {
-        Simulation.Instance.ToggleFollow();
-    }
+        #region Public Vars
 
-    #endregion Public Methods
+        #endregion Public Vars
 
-	#region MonoBehaviour
+        #region Public Methods
+
+        public void Restart()
+        {
+            Simulation.Instance.Restart();
+        }
+
+        public void Reset()
+        {
+            Simulation.Instance.Reset();
+        }
+
+        public void ToggleLog()
+        {
+            Simulation.Instance.ToggleLog();
+        }
+
+        public void ToggleSharedSettings()
+        {
+            Simulation.Instance.ToggleSharedSettings();
+        }
+
+        public void ToggleFollow()
+        {
+            Simulation.Instance.ToggleFollow();
+        }
+
+        #endregion Public Methods
+
+        #region MonoBehaviour
 	
-	void Awake()
-	{
-	}
+        void Awake()
+        {
+        }
 
-	void Start()
-	{
-	}
+        void Start()
+        {
+        }
 	
-	void Update()
-	{
-	}
+        void Update()
+        {
+        }
 
-	#endregion MonoBehaviour
+        #endregion MonoBehaviour
 
-	#region Private Methods
-	#endregion Private Methods
+        #region Private Methods
+        #endregion Private Methods
+    }
 }
