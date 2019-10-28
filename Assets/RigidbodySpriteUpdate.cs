@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace zs
 {
-    public class SimulationPostUpdate : MonoBehaviour
+    public class RigidbodySpriteUpdate : MonoBehaviour
     {
         #region Serializable Fields
 
@@ -17,7 +17,6 @@ namespace zs
 
         private Transform _rigidbodySpriteParent = null;
 
-        private PhysicsSyncType _syncType;
         private DisplayStyle _displayStyle;
 
         private readonly List<Tuple<Player, Transform>> _playerToRigidbodySprite = new List<Tuple<Player, Transform>>(); 
@@ -31,10 +30,8 @@ namespace zs
         #region Public Methods
 
         public void PerformRestart(
-            PhysicsSyncType syncType,
             DisplayStyle displayStyle)
         {
-            _syncType = syncType;
             _displayStyle = displayStyle;
 
             foreach (var item in _playerToRigidbodySprite)
@@ -66,16 +63,11 @@ namespace zs
         }
 
         /// <summary>
-        /// Get's called at the end of the Update cycle.
+        /// Get's called at the end of the Update cycle after ManualPhysicUpdate.
         /// Defined in project settings under "Script Execution Order".
         /// </summary>
         void Update()
         {
-            if (_syncType == PhysicsSyncType.Post_Update)
-            {
-                Physics2D.Simulate(Time.deltaTime);
-            }
-
             // Refresh the position of the red rectangle, which indicates the (maybe interpolated) position of the rigidbody.
             foreach (var item in _playerToRigidbodySprite)
             {

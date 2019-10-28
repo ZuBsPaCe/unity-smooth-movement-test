@@ -121,7 +121,8 @@ namespace zs
 
         #region Private Vars
 
-        private SimulationPostUpdate _postUpdate;
+        private ManualPhysicUpdate _manualPhysicUpdate;
+        private RigidbodySpriteUpdate _rigidbodySpriteUpdate;
 
         private bool _sharedSettings = false;
         private int _followLane = -1;
@@ -259,7 +260,8 @@ namespace zs
         {
             Instance = this;
 
-            _postUpdate = GetComponent<SimulationPostUpdate>();
+            _manualPhysicUpdate = GetComponent<ManualPhysicUpdate>();
+            _rigidbodySpriteUpdate = GetComponent<RigidbodySpriteUpdate>();
 
             _ballParent = new GameObject().transform;
             _ballParent.gameObject.name = "Ball Container";
@@ -413,20 +415,12 @@ namespace zs
 
             _frameRatePanel.gameObject.SetActive(_vsyncSlider.value == 0);
 
-            _physicsSyncType = (PhysicsSyncType) (int) _physicsSyncSlider.value;
 
-            if (_physicsSyncType == PhysicsSyncType.Post_Update)
-            {
-                Physics2D.autoSimulation = false;
-            }
-            else
-            {
-                Physics2D.autoSimulation = true;
-            }
+            _physicsSyncType = (PhysicsSyncType) (int) _physicsSyncSlider.value;
+            _manualPhysicUpdate.PerformRestart(_physicsSyncType);
 
             DisplayStyle displayStyle = (DisplayStyle) (int) _displaySlider.value;
-
-            _postUpdate.PerformRestart(_physicsSyncType, displayStyle);
+            _rigidbodySpriteUpdate.PerformRestart(displayStyle);
 
             _colliderTilemap.ClearAllTiles();
             _backgroundTilemap.ClearAllTiles();
@@ -548,7 +542,7 @@ namespace zs
                     _speedSlider.value,
                     displayStyle);
 
-                _postUpdate.RegisterPlayer(player);
+                _rigidbodySpriteUpdate.RegisterPlayer(player);
 
                 if (_hingeSlider.value > 0 && player.HingeJoint != null)
                 {

@@ -323,6 +323,21 @@ namespace zs
                     break;
                 }
 
+                case MovementType.Rigidbody_CustomMove:
+                {
+                    _startInterpolationPos = _rigidbody.position;
+
+                    Vector3 position = _rigidbody.position;
+                    position.x += Time.deltaTime * _velocity;
+
+                    HandleReversal(ref position);
+
+                    _rigidbody.CustomMove(position);
+
+                    _endInterpolationPos = _rigidbody.position;
+                    break;
+                }
+
                 case MovementType.Rigidbody_SetVelocity:
                 {
                     _startInterpolationPos = _rigidbody.position;

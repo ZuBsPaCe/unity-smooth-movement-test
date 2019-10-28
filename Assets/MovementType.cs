@@ -6,6 +6,7 @@ namespace zs
         Transform_Position,
         Rigidbody_Position,
         Rigidbody_MovePosition,
+        Rigidbody_CustomMove,
         Rigidbody_SetVelocity,
         Rigidbody_AddVelocity,
         Rigidbody_AddForce,

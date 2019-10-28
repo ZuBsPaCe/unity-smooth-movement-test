@@ -8579,6 +8579,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1666928243}
   - component: {fileID: 1666928242}
+  - component: {fileID: 1666928245}
   - component: {fileID: 1666928244}
   m_Layer: 0
   m_Name: Simulation
@@ -8661,11 +8662,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1666928241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1596c37ff032fd4e907d992dcff1fd2, type: 3}
+  m_Script: {fileID: 11500000, guid: de59001aaffe4ed4abef41e7c0d77d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbodySpritePrefab: {fileID: 5467207114673891097, guid: db401ea4eb711f6468096c62bc78e50c,
     type: 3}
+--- !u!114 &1666928245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666928241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1596c37ff032fd4e907d992dcff1fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1669889583
 GameObject:
   m_ObjectHideFlags: 0
