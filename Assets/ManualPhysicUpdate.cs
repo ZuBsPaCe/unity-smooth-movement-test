@@ -51,7 +51,12 @@ namespace zs
         {
             if (_syncType == PhysicsSyncType.Post_Update)
             {
-                Physics2D.Simulate(Time.deltaTime);
+                float safeDeltaTime = 
+                    Time.deltaTime < Time.maximumDeltaTime ? 
+                        Time.deltaTime : 
+                        Time.maximumDeltaTime;
+
+                Physics2D.Simulate(safeDeltaTime);
             }
         }
         
